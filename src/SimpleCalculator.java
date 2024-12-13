@@ -1,55 +1,55 @@
 import java.util.Scanner;
 
 public class SimpleCalculator {
-    // Atributo para armazenar o histórico de operações
+    // Attribute to store the history of operations
     private StringBuilder history = new StringBuilder();
 
-    // Método para adicionar dois números
+    // Method to add two numbers
     public double add(double num1, double num2) {
         double result = num1 + num2;
         history.append("Addition: ").append(num1).append(" + ").append(num2).append(" = ").append(result).append("\n");
         return result;
     }
 
-    // Método para subtrair dois números
+    // Method to subtract two numbers
     public double subtract(double num1, double num2) {
         double result = num1 - num2;
         history.append("Subtraction: ").append(num1).append(" - ").append(num2).append(" = ").append(result).append("\n");
         return result;
     }
 
-    // Método para multiplicar dois números
+    // Method to multiply two numbers
     public double multiply(double num1, double num2) {
         double result = num1 * num2;
         history.append("Multiplication: ").append(num1).append(" * ").append(num2).append(" = ").append(result).append("\n");
         return result;
     }
 
-    // Método para dividir dois números
+    // Method to divide two numbers
     public double divide(double num1, double num2) {
         if (num2 == 0) {
             System.out.println("Error! Division by zero.");
             history.append("Attempted Division by Zero\n");
-            return Double.NaN; // Retorna 'NaN' para indicar erro
+            return Double.NaN; // Return 'NaN' to indicate an error
         }
         double result = num1 / num2;
         history.append("Division: ").append(num1).append(" / ").append(num2).append(" = ").append(result).append("\n");
         return result;
     }
 
-    // Método para calcular o módulo de dois números
+    // Method to calculate the modulo of two numbers
     public double modulo(double num1, double num2) {
         if (num2 == 0) {
             System.out.println("Error! Division by zero.");
             history.append("Attempted Modulo by Zero\n");
-            return Double.NaN; // Retorna 'NaN' para indicar erro
+            return Double.NaN; // Return 'NaN' to indicate an error
         }
         double result = num1 % num2;
         history.append("Modulo: ").append(num1).append(" % ").append(num2).append(" = ").append(result).append("\n");
         return result;
     }
 
-    // Método para exibir o histórico de operações
+    // Method to display the history of operations
     public void showHistory() {
         if (history.length() > 0) {
             System.out.println("\nOperation History:");
@@ -59,28 +59,28 @@ public class SimpleCalculator {
         }
     }
 
-    // Método para resetar o histórico
+    // Method to reset the history
     public void resetHistory() {
         history.setLength(0);
         System.out.println("History has been reset.");
     }
 
-    // Método para obter uma entrada válida (número decimal)
+    // Method to get a valid input (decimal number)
     public double getValidInput(Scanner scanner) {
         while (true) {
             if (scanner.hasNextDouble()) {
                 return scanner.nextDouble();
             } else {
                 System.out.println("Invalid input! Please enter a valid number.");
-                scanner.next(); // Limpar o buffer de entrada
+                scanner.next(); // Clear the input buffer
             }
         }
     }
 
-    // Método para exibir o menu e validar a escolha de operação
+    // Method to display the menu and validate the operation choice
     public int getValidOperationChoice(Scanner scanner) {
         int choice = -1;
-        while (choice < 1 || choice > 5) {
+        while (choice < 1 || choice > 8) { // Now checking for choice 1-8
             System.out.println("\nChoose an operation:");
             System.out.println("1. Add");
             System.out.println("2. Subtract");
@@ -95,7 +95,7 @@ public class SimpleCalculator {
                 choice = scanner.nextInt();
             } else {
                 System.out.println("Invalid input! Please choose a valid option.");
-                scanner.next(); // Limpar o buffer de entrada
+                scanner.next(); // Clear the input buffer
             }
         }
         return choice;
@@ -107,22 +107,22 @@ public class SimpleCalculator {
         SimpleCalculator calculator = new SimpleCalculator();
 
         while (true) {
-            // Exibir o menu e obter a escolha do usuário
+            // Display the menu and get the user's choice
             int choice = calculator.getValidOperationChoice(scanner);
 
             if (choice == 8) {
                 System.out.println("Exiting program...");
-                break; // Sai do loop e encerra o programa
+                break; // Exit the loop and terminate the program
             }
 
-            // Solicitar os números para a operação
+            // Ask for the numbers to perform the operation
             System.out.println("Enter the first number: ");
             double num1 = calculator.getValidInput(scanner);
 
             System.out.println("Enter the second number: ");
             double num2 = calculator.getValidInput(scanner);
 
-            // Realizar a operação escolhida e exibir o resultado
+            // Perform the selected operation and display the result
             double result = 0;
             switch (choice) {
                 case 1:
@@ -148,7 +148,7 @@ public class SimpleCalculator {
                     continue;
             }
 
-            // Exibir o resultado da operação
+            // Display the result of the operation
             if (!Double.isNaN(result)) {
                 System.out.println("Result: " + result);
             }
