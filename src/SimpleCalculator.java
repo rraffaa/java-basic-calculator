@@ -154,6 +154,7 @@ public class SimpleCalculator {
             }
         }
 
+        
         scanner.close();
     }
 }
