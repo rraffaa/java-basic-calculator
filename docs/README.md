@@ -20,7 +20,7 @@ This is a basic calculator program implemented in Java. It performs basic arithm
   
 2. Open the project in your preferred IDE (e.g., Visual Studio Code).
 
-3. Compile and run the Calculator.java file to see the output of the arithmetic operations.
+3. Compile and run the SimpleCalculator.java file to see the output of the arithmetic operations.
 
 ## How to Use
 
